@@ -378,9 +378,9 @@ function skywp_customizer_options( $wp_customize ) {
 		'priority'				=> 10,
 		'type'           => 'select',
         'choices'        => array(
-            '100'   => __( '400', 'skywp' ),
-            '200'   => __( '400', 'skywp' ),
-            '300'   => __( '400', 'skywp' ),
+            '100'   => __( '100', 'skywp' ),
+            '200'   => __( '200', 'skywp' ),
+            '300'   => __( '300', 'skywp' ),
             '400'   => __( '400', 'skywp' ),
             '500'  => __( '500', 'skywp' ),
             '600'  => __( '600', 'skywp' ),

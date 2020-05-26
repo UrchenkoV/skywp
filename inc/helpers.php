@@ -246,6 +246,7 @@ function skywp_custom_styles_customizer() {
 	$skywp_header_letter_spacing = esc_attr( get_theme_mod( 'skywp_header_letter_spacing', '1' ) ) .'px';
 	$skywp_header_text_transform = esc_attr( get_theme_mod( 'skywp_header_text_transform', 'capitalize' ) );
 	$skywp_header_menu_button_color = esc_attr( get_theme_mod( 'skywp_header_menu_button_color', '#212121' ) );
+	$skywp_header_m_menu_but_color_absolute = esc_attr( get_theme_mod( 'skywp_header_m_menu_but_color_absolute', '#212121' ) );
 	$skywp_header_background_mobile = esc_attr( get_theme_mod( 'skywp_header_background_mobile', '#212121' ) );
 	$skywp_header_border_mobile_color = esc_attr( get_theme_mod( 'skywp_header_border_mobile_color', '#484848' ) );
 	$skywp_header_mobile_color = esc_attr( get_theme_mod( 'skywp_header_mobile_color', '#ffffff' ) );
@@ -445,9 +446,12 @@ function skywp_custom_styles_customizer() {
 			font-size: $skywp_header_font_size; font-weight: $skywp_header_font_weight; letter-spacing: $skywp_header_letter_spacing; text-transform: $skywp_header_text_transform; }
 		#site-header.standard-current-menu #site-navigation-wrap #site-navigation .current-menu-item a { color: $skywp_accent_color; }
 
-		#site-header .hc-nav-trigger span,
-		#site-header .hc-nav-trigger span::before,
-		#site-header .hc-nav-trigger span::after { background: $skywp_header_menu_button_color; }
+		.header-position-relative #site-header .hc-nav-trigger span,
+		.header-position-relative #site-header .hc-nav-trigger span::before,
+		.header-position-relative #site-header .hc-nav-trigger span::after { background: $skywp_header_menu_button_color; }
+		.header-position-absolute #site-header .hc-nav-trigger span,
+		.header-position-absolute #site-header .hc-nav-trigger span::before,
+		.header-position-absolute #site-header .hc-nav-trigger span::after { background: $skywp_header_m_menu_but_color_absolute; }
 		body .hc-offcanvas-nav .nav-container, .hc-offcanvas-nav .nav-wrapper, .hc-offcanvas-nav ul { background: $skywp_header_background_mobile; }
 		body .hc-offcanvas-nav li.nav-close a, .hc-offcanvas-nav li.nav-back a { background: $skywp_header_background_mobile; border-top: 1px solid $skywp_header_border_mobile_color; border-bottom: 1px solid $skywp_header_border_mobile_color; }
 		body .hc-offcanvas-nav a,

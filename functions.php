@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Core constants
-define( 'SKYWP_THEME_VERSIONE', '1.2.3' );
+define( 'SKYWP_THEME_VERSIONE', '1.2.4' );
 define( 'SKYWP_THEME_DIR', get_template_directory() );
 define( 'SKYWP_THEME_URI', get_template_directory_uri() );
 
@@ -98,8 +98,8 @@ define( 'SKYWP_THEME_URI', get_template_directory_uri() );
 
 		// Add support for core custom logo.
 		add_theme_support( 'custom-logo', array(
-			'height'      => 50,
 			'width'       => 155,
+			'height'      => 50,
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
@@ -141,9 +141,7 @@ define( 'SKYWP_THEME_URI', get_template_directory_uri() );
 	add_action( 'after_setup_theme', 'skywp_controls' );
 	function skywp_controls() {
 
-		/**
-		 * Customizer additions
-		 */
+		// Customizer additions
 		require_once( SKYWP_INC_DIR .'customizer/customizer.php' );
 		require_once( SKYWP_INC_DIR .'customizer/settings/general.php' );
 		require_once( SKYWP_INC_DIR .'customizer/settings/topbar.php' );
@@ -154,24 +152,20 @@ define( 'SKYWP_THEME_URI', get_template_directory_uri() );
 		require_once( SKYWP_INC_DIR .'customizer/sanitization-callbacks.php' );
 		require_once( SKYWP_INC_DIR .'customizer/settings/typography.php' );
 
+		// Helper functions
+		require_once( SKYWP_INC_DIR .'admin/admin-functions.php' );
 		require_once( SKYWP_INC_DIR .'helpers.php' );
 
 		require_once( SKYWP_INC_DIR .'walker/class-walker-nav-menu.php' );
 		
-		/**
-		 * Register widgets
-		 */
+		// Register widgets
 		require_once( SKYWP_INC_DIR .'widgets/class-sky-widget-recent-comments.php' );
 		require_once( SKYWP_INC_DIR .'widgets/class-skywp-728-90-advertisement.php' );
 
-		/**
-		 * Register widget area.
-		 */
+		// Register widget area.
 		require_once( SKYWP_INC_DIR . 'widgets/widgets.php' );
 
-		/**
-		 * Actions
-		 */
+		// Actions
 		require_once( SKYWP_INC_DIR . 'actions.php' );
 	}
 
@@ -267,7 +261,7 @@ function skywp_scripts_styles() {
 	wp_enqueue_style( 'font-awesome-5', get_template_directory_uri() . '/assets/libs/font-awesome/all.min.css', array(), '5.3.1' );
 
 	// Load main.css file
-	wp_enqueue_style( 'skywp-main-style', get_template_directory_uri() . '/assets/css/main.min.css', [], SKYWP_THEME_VERSIONE );
+	wp_enqueue_style( 'skywp-main-style', get_template_directory_uri() . '/assets/css/main.css', [], SKYWP_THEME_VERSIONE );
 
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -279,14 +273,13 @@ function skywp_scripts_styles() {
 
 	// Load plugin Masonry
 	if ( 'masonry' == get_theme_mod( 'skywp_post_page_style', 'default' ) ) {
-		wp_enqueue_script('masonry');
+		if ( is_home() || is_archive() ) {
+			wp_enqueue_script('masonry');
+		}
 	}
 	
 	// Load plugin mobile navigation
 	wp_enqueue_script('mobile-nav', get_template_directory_uri() . '/assets/libs/mobile-nav/hc-offcanvas-nav.js', array('jquery'), '', true);
-
-	// Helps with accessibility for keyboard only users.
-	wp_enqueue_script('skywp-skip-link-focus-fix', SKYWP_THEME_URI . '/assets/js/skip-link-focus-fix.js', array('jquery'), '', true);
 
 	// Load plugin scrolling pages
 	wp_enqueue_script('page-scroll-to-id-master', get_template_directory_uri() . '/assets/libs/page-scroll-to-id-master/jquery.malihu.PageScroll2id.min.js', array('jquery'), '', true);
@@ -303,11 +296,12 @@ function skywp_scripts_styles() {
  */
 add_action( 'admin_enqueue_scripts', 'skywp_backend_enqueue_script' );
 function skywp_backend_enqueue_script( $hook ) {
+	// Admin CSS
+	wp_enqueue_style( 'skywp-admin-css', get_template_directory_uri() . '/assets/admin/admin.css', [], SKYWP_THEME_VERSIONE );
+	
 	if ( 'widgets.php' != $hook ) {
-		return;
+		wp_enqueue_script( 'skywp-admin-js', SKYWP_THEME_URI . '/assets/admin/admin.js', array( 'jquery' ), SKYWP_THEME_VERSIONE, true );
 	}
-	wp_enqueue_script( 'skywp-admin', SKYWP_THEME_URI . '/assets/admin/admin.js', array( 'jquery' ), SKYWP_THEME_VERSIONE, true );
-
 }
 
 

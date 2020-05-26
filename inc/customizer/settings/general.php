@@ -32,6 +32,45 @@ function skywp_customizer_general_settings( $wp_customize ) {
 	) );
 
 	/**
+	 * Add a different logo in the template: Full-Width Page
+	 */
+	$wp_customize->add_setting( 'skywp_logo_full_width_page', array(
+		'default'				=> false,
+		'sanitize_callback' 	=> 'skywp_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'skywp_logo_full_width_page', array(
+		'label'					=> esc_html__('Add a different logo in the template: Full-Width Page', 'skywp'),
+		'type'					=> 'checkbox',
+		'section'				=> 'title_tagline',
+		'settings'				=> 'skywp_logo_full_width_page',
+		'priority'				=> 9,
+	) ) );
+
+	/**
+	 * Logo - absolute
+	 */
+	$wp_customize->add_setting( 'skywp_logo_absolute', array(
+			'default' => '',
+			'sanitize_callback' => 'absint'
+	) );
+	$wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize, 'skywp_logo_absolute', array(
+			'label' => esc_html__( 'Logo', 'skywp' ),
+			'section' => 'title_tagline',
+			'priority' => 9.5,
+			'flex_width' => false,
+			'flex_height' => false,
+			'width' => 155,
+			'height' => 60,
+			'active_callback'   => function(){
+	       		return get_theme_mod( 'skywp_logo_full_width_page' ) == true;
+	   		},
+	) ) );
+
+
+
+
+
+	/**
 	 * Header Image
 	 */
 	$wp_customize->add_section( 'header_image', array(
@@ -46,6 +85,10 @@ function skywp_customizer_general_settings( $wp_customize ) {
             return get_theme_mod( 'header_image' );
         }
     ) );
+
+
+
+
 
 	/**
 	 * Section Main Styling

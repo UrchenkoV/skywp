@@ -261,6 +261,7 @@ ul li a:after {
 	display: none;
 }
 p {
+	margin: 0;
 	line-height: 25px;
 }
 .post-content p {
@@ -1242,6 +1243,11 @@ body.admin-bar #site-header.fixed {
 	font-size: 16px;
 	color: #333;
 	margin: 0;
+}
+@media screen and ( max-width: 768px ) {
+header #site-logo {
+	max-width: 120px;
+}
 }
 
 
@@ -2388,7 +2394,7 @@ Sidebar
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	padding-bottom: 17px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .site_widget  ul li {
 	position: relative;

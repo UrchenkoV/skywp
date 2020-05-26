@@ -4,7 +4,7 @@
 *
 * @package Urchenko
 * @subpackage SkyWP WordPress theme
-* @since SkyWP 1.0.0
+* @since SkyWP 1.2.4
 */
 
 // Exit if accessed directly
@@ -13,13 +13,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="site-logo" class="clr">
+<div id="site-logo" class="logo">
 
-	<?php if ( has_custom_logo() ) { ?>
-		<div id="site-logo-inner" class="clr">
-			<?php the_custom_logo() ?>
-		</div>
-	<?php } ?>
+	<?php
+	if ( get_theme_mod( 'skywp_logo_full_width_page', false ) == true && is_page_template( 'template-parts/full-width-page.php' ) ) {
+	 	if ( has_custom_logo() ) {
+	 	?>
+	 		<div id="site-logo-inner" class="logo">
+	 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home">
+				<?php
+				$logo = get_theme_mod( 'skywp_logo_absolute' );
+				echo wp_get_attachment_image( $logo, [155, 60] );
+				?>
+				</a>
+			</div>
+		<?php
+	 	}
+	 } else {
+	 	if ( has_custom_logo() ) {
+	 	?>
+	 		<div id="site-logo-inner" class="logo">
+				<?php the_custom_logo() ?>
+			</div>
+		<?php
+	 	}
+	 }
+	 ?>
 
 	<?php if ( display_header_text() ) { ?>
 		<div class="branding-text">

@@ -496,7 +496,7 @@ function skywp_customizer_header_options( $wp_customize ) {
 	) ) );
 
 	/**
-	* Button Menu
+	* Mobile menu button color - relative
 	*/
 	$wp_customize->add_setting( 'skywp_header_menu_button_color', array(
 		'default'			=> '#212121',
@@ -504,9 +504,32 @@ function skywp_customizer_header_options( $wp_customize ) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'skywp_header_menu_button_color', array(
 		'label'				=> esc_html__( 'Button Menu', 'skywp' ),
+		'description'     => __( 'This setting changes the color on pages where (Position: relative)', 'skywp' ),
 		'section'			=> 'skywp_header_mobile_menu',
 		'settings'			=> 'skywp_header_menu_button_color',
 		'priority'			=> 10,
+		'active_callback'   => function(){
+       		return ( get_theme_mod( 'skywp_header_position', 'relative' ) == 'absolute' && get_theme_mod( 'skywp_header_disable_position_absolute_all_except_full_width_page', false ) == true ) || get_theme_mod( 'skywp_header_position', 'relative' ) == 'relative';
+   		},
+	) ) );
+
+	/**
+	 * Mobile menu button color - absolute
+	 */
+	$wp_customize->add_setting( 'skywp_header_m_menu_but_color_absolute', array(
+		'default' => '#212121',
+		'sanitize_callback' 	=> 'skywp_sanitize_color',
+	) );
+
+	$wp_customize->add_control( new SkyWP_Customize_Color_Control( $wp_customize, 'skywp_header_m_menu_but_color_absolute', array(
+		'label'				=> esc_html__( 'Button Menu', 'skywp' ),
+		'description'     => __( 'This setting changes the color on pages where (Position: absolute)', 'skywp' ),
+		'section'			=> 'skywp_header_mobile_menu',
+		'settings'			=> 'skywp_header_m_menu_but_color_absolute',
+		'priority'			=> 10,
+		'active_callback'   => function(){
+       		return get_theme_mod( 'skywp_header_position', 'relative' ) == 'absolute';
+   		},
 	) ) );
 
 	/**
@@ -795,7 +818,7 @@ function skywp_customizer_header_options( $wp_customize ) {
 	$section_link = add_query_arg( $query, admin_url( 'customize.php' ) );
 
 	$wp_customize->add_control( new SkyWP_Notice_Control( $wp_customize, 'skywp_theme_button_notice', array(
-			'description' => sprintf( esc_html__( '%1$sCutomize Button Style.%2$s', 'skywp' ), '<a href="'. esc_url( $section_link ) .'">', '</a>' ),
+			'description' => sprintf( esc_html__( '%1$sCustomize Button Style.%2$s', 'skywp' ), '<a href="'. esc_url( $section_link ) .'">', '</a>' ),
 			'section' => 'skywp_right_header_item',
 			'priority'				=> 10,
 			'active_callback'   => function() {
