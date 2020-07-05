@@ -386,6 +386,51 @@ function skywp_customizer_general_settings( $wp_customize ) {
 		'priority'				=> 10,
 	) ) );
 
+	/**
+	 * Header
+	 */
+	$wp_customize->add_setting( 'skywp_colors_heading', array(
+		'sanitize_callback' 	=> 'wp_kses',
+	) );
+
+	$wp_customize->add_control( new SkyWP_Customizer_Heading_Control( $wp_customize, 'skywp_colors_heading', array(
+		'label'    				=> esc_html__( 'Colors', 'skywp' ),
+		'description'    				=> esc_html__( 'These settings change the color in some places on the site, but they are primarily designed to change the color on WooCommerce pages.', 'skywp' ),
+		'section'  				=> 'skywp_general_settings_styling',
+		'settings'				=> 'skywp_colors_heading',
+		'priority' 				=> 10,
+	) ) );
+
+	/**
+	 * Background
+	 */
+	$wp_customize->add_setting( 'skywp_colors_bg', array(
+		'default'				=> '#fafafa',
+		'sanitize_callback' 	=> 'skywp_sanitize_color',
+	) );
+
+	$wp_customize->add_control( new SkyWP_Customize_Color_Control( $wp_customize, 'skywp_colors_bg', array(
+		'label'					=> esc_html__('Background', 'skywp'),
+		'section'				=> 'skywp_general_settings_styling',
+		'settings'				=> 'skywp_colors_bg',
+		'priority'				=> 10,
+	) ) );
+
+	/**
+	 * Border
+	 */
+	$wp_customize->add_setting( 'skywp_colors_border', array(
+		'default'				=> '#e4e4e4',
+		'sanitize_callback' 	=> 'skywp_sanitize_color',
+	) );
+
+	$wp_customize->add_control( new SkyWP_Customize_Color_Control( $wp_customize, 'skywp_colors_border', array(
+		'label'					=> esc_html__('Border', 'skywp'),
+		'section'				=> 'skywp_general_settings_styling',
+		'settings'				=> 'skywp_colors_border',
+		'priority'				=> 10,
+	) ) );
+
 
 
 

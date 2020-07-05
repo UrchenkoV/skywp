@@ -24,9 +24,6 @@ See the detailed instructions for installing our demo sites: https://urchenko.ru
 = Can I install the demo version in one click? =
 Yes, you can install our demo data. Follow the instructions: https://urchenko.ru/get-started/
 
-== Screenshots ==
-1. /assets/img/screenshot-1.png
-
 == Changelog ==
 
 = 1.2.2 =

@@ -1,3 +1,8 @@
+.widget-liquid-right .widgets-holder-wrap {
+	display: block;
+}
+
+
 /**
  * A notification asking you to put a 5-star rating on the theme.
  */

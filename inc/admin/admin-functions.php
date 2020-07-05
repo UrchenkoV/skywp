@@ -41,7 +41,7 @@ function skywp_show_notice() {
 		<p class="notice-container"></p>
 		<div class="notice-content">
 			<div class="notice-heading">
-				<?php esc_html_e( 'Hello! Seems like you have used SkyWP theme to build this website — Thanks a ton!', 'skywp' ); ?>
+				<?php esc_html_e( 'Hello! Seems like you have used SkyWP theme to build this website - Thanks a ton!', 'skywp' ); ?>
 			</div>
 			<?php esc_html_e( 'Could you please do us a big favor and give it a 5-star rating on WordPress? This would boost our motivation and help other users make a comfortable decision while choosing the SkyWP theme.', 'skywp' ); ?>
 			<div class="links-container">

@@ -206,7 +206,11 @@ ul {
 }
 ol {
 	list-style-type: decimal;
-	padding: 0;
+	padding-left: 20px;
+}
+.post-content ul {
+	margin: 15px 0;
+	padding-left: 20px;
 }
 .post-content-wrap .post-content li > ul,
 .post-content-wrap .post-content li > ol {
@@ -1939,6 +1943,7 @@ Archive Page
 }
 #content-wrap #primary .post-image {
 	text-align: center;
+	margin-bottom: 30px;
 	line-height: 0;
 }
 #content-wrap #primary .post-image a {
@@ -2056,7 +2061,7 @@ Single Post
 	
 }
 #content-wrap #single-content .post-content-wrap {
-	margin: 30px 0;
+	margin: 0 0 30px 0;
 }
 #content-wrap .post-content-wrap .entry-title {
 	color: #333;
@@ -2211,6 +2216,10 @@ Comments
 #comments .comment-list .comment .comment-body .comment-meta .comment-metadata a:hover,
 #comments .comment-list .comment .comment-body .reply a:hover {
 	color: #00b4ff;
+}
+p.no-comments {
+    padding: 5px 15px;
+    border: 1px solid #e4e4e4;
 }
 
 
@@ -3134,6 +3143,13 @@ Better Docs
 .tax-doc_tag #content-wrap.wrapper {
 	max-width: 100%;
 	width: 100%;
+}
+.betterdocs-content p {
+	margin: 0 0 20px;
+}
+.betterdocs-content ul li,
+.betterdocs-content ol li {
+    line-height: 27px;
 }
 
 

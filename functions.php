@@ -14,9 +14,9 @@
  * For more information on hooks, actions, and filters,
  * see http://codex.wordpress.org/Plugin_API
  *
- * @package Urchenko Technologies
+ * @package Urchenko
  * @subpackage SkyWP WordPress theme
- * @since SkyWP 1.0.0
+ * @since SkyWP 1.2.7
  */
 
 // Exit if accessed directly
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Core constants
-define( 'SKYWP_THEME_VERSIONE', '1.2.4' );
+define( 'SKYWP_THEME_VERSIONE', '1.2.7' );
 define( 'SKYWP_THEME_DIR', get_template_directory() );
 define( 'SKYWP_THEME_URI', get_template_directory_uri() );
 
@@ -261,7 +261,7 @@ function skywp_scripts_styles() {
 	wp_enqueue_style( 'font-awesome-5', get_template_directory_uri() . '/assets/libs/font-awesome/all.min.css', array(), '5.3.1' );
 
 	// Load main.css file
-	wp_enqueue_style( 'skywp-main-style', get_template_directory_uri() . '/assets/css/main.css', [], SKYWP_THEME_VERSIONE );
+	wp_enqueue_style( 'skywp-main-style', get_template_directory_uri() . '/assets/css/main.min.css', [], SKYWP_THEME_VERSIONE );
 
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -273,8 +273,13 @@ function skywp_scripts_styles() {
 
 	// Load plugin Masonry
 	if ( 'masonry' == get_theme_mod( 'skywp_post_page_style', 'default' ) ) {
-		if ( is_home() || is_archive() ) {
+		if ( is_home() || is_archive() || is_singular() ) {
 			wp_enqueue_script('masonry');
+		}
+		if ( class_exists('WooCommerce') ) {
+			if ( is_checkout() || is_account_page() || is_cart() ) {
+				wp_enqueue_script('masonry');
+			}
 		}
 	}
 	

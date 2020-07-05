@@ -53,6 +53,9 @@ function skywp_woocommerce_scripts() {
 	$skywp_default_color = esc_attr( get_theme_mod( 'skywp_default_color', '#333333' ) );
 	$skywp_links_color_hover = esc_attr( get_theme_mod( 'skywp_links_color_hover', '#0ba6e6' ) );
 
+	$skywp_colors_bg = esc_attr( get_theme_mod( 'skywp_colors_bg', '#fafafa' ) );
+	$skywp_colors_border = esc_attr( get_theme_mod( 'skywp_colors_border', '#e4e4e4' ) );
+
 	// Button
 	$skywp_buttons_font_size = esc_attr( get_theme_mod( 'skywp_buttons_font_size', '14' ) ) .'px';
 	$skywp_buttons_font_weight = esc_attr( get_theme_mod( 'skywp_buttons_font_weight', '400' ) );
@@ -74,8 +77,59 @@ function skywp_woocommerce_scripts() {
 		.site-header-cart .widget_shopping_cart_content .woocommerce-mini-cart__total .woocommerce-Price-amount,
 		.sidebar .widget_shopping_cart .woocommerce-mini-cart__total .amount,
 		.woocommerce ul.product-categories>li ul li:before,
-		.woocommerce-products-header .page-title { 
+		.woocommerce-products-header .page-title,
+		.CardNumberField-input-wrapper input.InputElement,
+		.CardField-child input.InputElement { 
 			color: $skywp_accent_color; }
+
+		.woocommerce table.shop_table thead,
+		.woocommerce .cart-collaterals .cart_totals h2,
+		.site-header-cart .widget_shopping_cart,
+		.woocommerce .select2-container .select2-selection--single,
+		.woocommerce select,
+		.woocommerce-error,
+		.woocommerce-message,
+		.woocommerce-info,
+		.woocommerce-account .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link.is-active a,
+		.woocommerce-MyAccount-content .col2-set .woocommerce-Address-title,
+		.payment_method_woocommerce_payments #wcpay-card-element,
+		.woocommerce .woocommerce-customer-details .woocommerce-column__title { background: $skywp_colors_bg; }
+
+		.woocommerce .woocommerce-table--order-downloads tbody tr td,
+		.woocommerce .woocommerce-table--order-details tbody tr td,
+		.woocommerce .shop_table tbody tr td,
+		.woocommerce table.woocommerce-table--order-downloads,
+		.woocommerce table.woocommerce-table--order-details,
+		.woocommerce table.shop_table,
+		.woocommerce .cart-collaterals .cart_totals h2,
+		.woocommerce .cart-collaterals .cart_totals,
+		.woocommerce .cart-collaterals .cart_totals .shop_table tr th,
+		.woocommerce .cart-collaterals .cart_totals .shop_table tr td,
+		.site-header-cart .widget_shopping_cart,
+		.site-header-cart .widget_shopping_cart_content .woocommerce-mini-cart__total,
+		.site-header-cart ul.product_list_widget li.mini_cart_item,
+		.woocommerce .select2-container .select2-selection--single,
+		.woocommerce select,
+		.woocommerce .woocommerce-checkout #order_review_heading,
+		.woocommerce .woocommerce-checkout .woocommerce-checkout-review-order,
+		.woocommerce .woocommerce-checkout .woocommerce-billing-fields h3,
+		.woocommerce-checkout .woocommerce-additional-fields h3,
+		.woocommerce .woocommerce-checkout .woocommerce-checkout-review-order table.shop_table thead tr th,
+		.woocommerce .woocommerce-checkout .woocommerce-checkout-review-order table.shop_table tfoot tr th,
+		.woocommerce .woocommerce-checkout .woocommerce-checkout-review-order table.shop_table tfoot tr td,
+		.woocommerce-account .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link,
+		.woocommerce-MyAccount-content .col2-set .woocommerce-Address-title,
+		.woocommerce-MyAccount-content .woocommerce-Address,
+		.woocommerce-MyAccount-content .woocommerce-EditAccountForm fieldset,
+		.woocommerce .woocommerce-form-login, .woocommerce .woocommerce-form-register,
+		.woocommerce #payment .payment_methods li .payment_box.payment_method_woocommerce_payments fieldset,
+		.payment_method_woocommerce_payments #wcpay-card-element,
+		.woocommerce ul.order_details li:not(:last-child),
+		.woocommerce .woocommerce-table--order-details tfoot tr th, .woocommerce .woocommerce-table--order-details tfoot tr td,
+		.woocommerce .woocommerce-customer-details address,
+		.woocommerce .woocommerce-customer-details .woocommerce-column__title { border-color: $skywp_colors_border; }
+
+		.woocommerce table.shop_table tbody td.product-remove a.remove { color: $skywp_colors_border; }
 
 		/*** Button ***/
 		.site-header-cart ul.product_list_widget li.mini_cart_item a { color: $skywp_default_color; }
@@ -154,7 +208,6 @@ function skywp_woocommerce_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'skywp_woocommerce_scripts' );
-
 
 
 /**

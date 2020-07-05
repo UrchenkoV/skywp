@@ -22,8 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 		<div id="site-logo-inner" class="logo">
 	 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home">
 				<?php
-				$logo = get_theme_mod( 'skywp_logo_absolute' );
-				echo wp_get_attachment_image( $logo, [155, 60] );
+				$skywp_logo = get_theme_mod( 'skywp_logo_absolute' );
+				echo wp_get_attachment_image( $skywp_logo, [155, 60] );
 				?>
 				</a>
 			</div>

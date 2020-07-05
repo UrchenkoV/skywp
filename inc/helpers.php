@@ -172,20 +172,24 @@ if ( ! function_exists( 'skywp_topbar_column_layout' ) ) {
 		if ( is_active_sidebar( 'topbar-right' ) || has_nav_menu( 'social_topbar' ) ) {
 		?>
 			<div class="column col-3">
-				<?php dynamic_sidebar('topbar-right'); ?>
-				<nav class="social-navigation" role="navigation">
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'social_topbar',
-							'menu_class'     => 'social-links-menu',
-							'depth'          => 1,
-							'link_before'    => '<span class="screen-reader-text">',
-							'link_after'     => '</span>',
-						)
-					);
-					?>
-				</nav>
+				<?php dynamic_sidebar('topbar-right');
+				
+				if ( has_nav_menu( 'social_topbar' ) ) { ?>
+					<nav class="social-navigation" role="navigation">
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'social_topbar',
+								'menu_class'     => 'social-links-menu',
+								'fallback_cb'     => 'social_topbar',
+								'depth'          => 1,
+								'link_before'    => '<span class="screen-reader-text">',
+								'link_after'     => '</span>',
+							)
+						);
+						?>
+					</nav>
+				<?php } ?>
 			</div>
 		<?php
 		}
@@ -213,6 +217,9 @@ function skywp_custom_styles_customizer() {
 	$skywp_links_color = esc_attr( get_theme_mod( 'skywp_links_color', '#00b4ff' ) );
 	$skywp_color_header_all_pages = esc_attr( get_theme_mod( 'skywp_color_header_all_pages', '#333333' ) );
 	$font_size_body = esc_attr( get_theme_mod( 'font_size_body', '16' ) ) .'px';
+
+	$skywp_colors_bg = esc_attr( get_theme_mod( 'skywp_colors_bg', '#fafafa' ) );
+	$skywp_colors_border = esc_attr( get_theme_mod( 'skywp_colors_border', '#e4e4e4' ) );
 
 	// TOPBAR
 	$topbar_width = absint( get_theme_mod( 'topbar_width', '1200' ) ) .'px';
@@ -352,6 +359,9 @@ function skywp_custom_styles_customizer() {
 
 		/*** BASE ***/
 		body { color: $skywp_default_color; font-family: $skywp_typography_body; font-size: $font_size_body; }
+		select { color: $skywp_default_color; }
+		select { background: $skywp_colors_bg; }
+		select { border-color: $skywp_colors_border; }
 		.site_widget,
 		.site_widget select { color: $skywp_default_color; }
 		.wrapper { max-width: $general_width; }
