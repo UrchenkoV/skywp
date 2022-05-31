@@ -1,0 +1,28 @@
+.widget-liquid-right .widgets-holder-wrap {
+	display: block;
+}
+
+
+/**
+ * A notification asking you to put a 5-star rating on the theme.
+ */
+#theme-rating .notice-content .notice-heading {
+	margin-bottom: 10px;
+}
+#theme-rating .notice-content .links-container {
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-align-items: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding-top: 10px;
+}
+#theme-rating .notice-content .links-container .dashicons {
+	padding: 0 0 0 10px;
+    margin-right: 15px;
+}
