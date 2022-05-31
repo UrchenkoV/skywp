@@ -3,7 +3,7 @@ Contributors: urchenko
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-menu, custom-logo, custom-header, custom-colors, full-width-template, e-commerce, featured-images, editor-style, threaded-comments, translation-ready, theme-options, news, blog, sticky-post, microformats
 Donate link: https://urchenko.ru/donate/
 Requires at least: 5.2.0
-Tested up to: 5.8.1
+Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
